@@ -1,17 +1,18 @@
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Sidebar';
+import { useState } from 'react';
+import Header from '../components/Header';
 
 const AdminLayout = () => {
+    const [isOpen, setIsOpen] = useState(false);
     return (
-        <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+        <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             {/* Sidebar will go here */}
-            <div className="w-72 bg-white">
-                <Sidebar />
-            </div>
+            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
-            <div className="flex-1">
-                {/* Navbar will go here */}
-                <div className="h-16 bg-white shadow px-4 flex items-center">Navbar</div>
+            <div className="lg:pl-72">
+                {/* Header will go here */}
+                <Header setIsMenuOpen={setIsOpen} />
 
                 <main className="p-4">
                     <Outlet />
