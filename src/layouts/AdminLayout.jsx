@@ -4,15 +4,15 @@ import { useState } from 'react';
 import Header from '../components/Header';
 
 const AdminLayout = () => {
-    const [isOpen, setIsOpen] = useState(false);
+    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     return (
         <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
             {/* Sidebar will go here */}
-            <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+            <Sidebar isSidebarOpen={isSidebarOpen} setIsSidebarOpen={setIsSidebarOpen} />
 
             <div className="lg:pl-72">
                 {/* Header will go here */}
-                <Header setIsMenuOpen={setIsOpen} />
+                <Header setIsMenuOpen={setIsSidebarOpen} />
 
                 <main className="p-4">
                     <Outlet />

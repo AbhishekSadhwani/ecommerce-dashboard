@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChartColumn, LayoutDashboard, LogOut, Package, Settings, ShoppingCart, Store, User, Users } from "lucide-react";
+import { ChartColumn, LayoutDashboard, LogOut, Package, Settings, ShoppingCart, Store, User, Users, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
 // navigation menu items
@@ -13,16 +13,16 @@ const NavMenu = [
 ];
 
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     // using useLocation hook by react router to get the pathname
     const pathname = useLocation().pathname;
 
     return (
         <>
             {
-                isOpen && (<div className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden" onClick={() => setIsOpen(false)}></div>)
+                isSidebarOpen && (<div className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>)
             }
-            <div className={`sidebar fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-gray-800 transition-transform duration-300 lg:translate-x-0 lg:inset-0 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}>
+            <div className={`sidebar fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-gray-800 transition-transform duration-300 lg:translate-x-0 lg:inset-0 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="flex flex-col h-full">
                     {/* sidebar header */}
                     <div className="sidebar-header flex items-center justify-between h-16 px-6 border-b border-gray-200 dark:border-gray-800">
@@ -35,6 +35,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                                 <p className="text-xs text-gray-500">eCommerce Dashboard</p>
                             </div>
                         </div>
+                        <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 rounded-lg text-gray-600 hover:text-gray-900 dark:hover:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800">
+                            <X className="text-gray-900 w-5 h-5" />
+                        </button>
                     </div>
                     {/* sidebar user info */}
                     <div className="sidebar-user-info border-b border-gray-200 dark:border-gray-800 p-6">
@@ -66,7 +69,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
                                             :
                                             "hover:bg-gray-100 dark:hover:bg-gray-800"
                                         }`}
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => setIsSidebarOpen(false)}
                                 >
                                     <Icon className={`mr-3 w-5 h-5 ${isActive ? "text-white" : "text-gray-500"} transition-transform duration-200 hover:text-gray-700 group-hover:scale-110`} />
                                     <span className={`${isActive ? "text-white" : "text-gray-700"} font-medium`}>{item.label}</span>
