@@ -14,7 +14,7 @@ const AdminLayout = () => {
                 {/* Header will go here */}
                 <Header setIsMenuOpen={setIsSidebarOpen} />
 
-                <main className="p-4">
+                <main className="py-8 px-4 sm:px-6 lg:px-8">
                     <Outlet />
                 </main>
             </div>
