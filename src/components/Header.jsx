@@ -2,7 +2,7 @@ import { Bell, Moon, Search } from "lucide-react";
 
 const Header = ({ setIsMenuOpen }) => {
     return (
-        <header className="bg-white border-b border-gray-200">
+        <header className="bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50 backdrop-blur-sm bg-white/80 dark:bg-gray-800/80">
             <div className="px-4 sm:px-6 lg:px-8">
                 <div className="h-16 flex items-center justify-between">
                     {/* mobile menu button */}
