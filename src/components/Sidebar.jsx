@@ -20,7 +20,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     return (
         <>
             {
-                isSidebarOpen && (<div className="fixed inset-0 z-40 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>)
+                isSidebarOpen && (<div className="fixed inset-0 z-50 bg-black bg-opacity-50 transition-opacity duration-300 lg:hidden" onClick={() => setIsSidebarOpen(false)}></div>)
             }
             <div className={`sidebar fixed inset-y-0 left-0 z-50 w-72 bg-white dark:bg-gray-800 transition-transform duration-300 lg:translate-x-0 lg:inset-0 ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}`}>
                 <div className="flex flex-col h-full">
