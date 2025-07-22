@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "email": "admin@example.com",
+      "password": "$2a$10$TOMQVcGqPRe9KHHpZt/WEO3Nvi7DrnNwT4kwSZZrrlEdG3cp0WRQu",
+      "role": "admin",
+      "status": "active",
+      "id": 1
+    },
+    {
+      "email": "manager@example.com",
+      "password": "$2a$10$5uVZXrBbqouRtV5TFF7zxu0ppyxHmN3C6wlX/jzNa8H2MmqcmjdoW",
+      "role": "manager",
+      "status": "active",
+      "id": 2
+    },
+    {
+      "email": "staff@example.com",
+      "password": "$2a$10$tPqAKxUd8BFVDMcFTMsqjuboNq6qfJ1i04JCLA0JNavQ/.XSvVyzK",
+      "role": "staff",
+      "status": "active",
+      "id": 3
+    }
+  ]
+}
