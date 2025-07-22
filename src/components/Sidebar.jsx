@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChartColumn, LayoutDashboard, LogOut, Package, Settings, ShoppingCart, Store, User, Users, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 // navigation menu items
 const NavMenu = [
@@ -16,6 +17,7 @@ const NavMenu = [
 const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
     // using useLocation hook by react router to get the pathname
     const pathname = useLocation().pathname;
+    const { logout } = useAuth();
 
     return (
         <>
@@ -80,10 +82,10 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                     </nav>
                     {/* sidebar footer */}
                     <div className="sidebar-footer p-4 border-t border-gray-200 dark:border-gray-800">
-                        <Link to="/login" className="px-4 py-3 text-red-700 w-full flex items-center space-x-3 rounded-xl hover:bg-red-50 dark:hover:bg-red-900 transition-all duration-200 group">
+                        <button onClick={logout} className="px-4 py-3 text-red-700 w-full flex items-center space-x-3 rounded-xl hover:bg-red-50 dark:hover:bg-red-900 transition-all duration-200 group">
                             <LogOut className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
                             <span className="text-sm font-medium">Sign out</span>
-                        </Link>
+                        </button>
                     </div>
                 </div>
             </div>

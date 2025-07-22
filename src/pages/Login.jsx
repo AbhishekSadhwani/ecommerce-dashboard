@@ -1,12 +1,20 @@
 import { useState } from 'react';
 import { Store, Eye, EyeOff, ArrowRight } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 export const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const { login, loading, error } = useAuth();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await login(email, password);
+    };
 
     return (
+
         <div className="max-w-md w-full space-y-8">
             <div className="animate-slide-up">
                 <div className="flex justify-center">
@@ -36,7 +44,9 @@ export const Login = () => {
                     </div>
                 </div>
             </div>
-            <form className="mt-8 space-y-6 animate-fade-in">
+
+            {/* login form  */}
+            <form className="mt-8 space-y-6 animate-fade-in" onSubmit={handleSubmit}>
                 <div className="space-y-4">
                     <div>
                         <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2" htmlFor="email">Email address</label>
@@ -74,15 +84,22 @@ export const Login = () => {
                         </div>
                     </div>
                 </div>
+                {error && <div className="text-red-600 dark:text-red-400 text-sm text-center">{error}</div>}
                 <div>
                     <button
                         type="submit"
-                        className="text-sm mt-2 w-full py-3 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg shadow-md hover:from-primary-600 hover:to-secondary-600 transition-all flex items-center justify-center gap-2"
+                        className="text-sm mt-2 w-full py-3 rounded-lg bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-semibold text-lg shadow-md hover:from-primary-600 hover:to-secondary-600 transition-all flex items-center justify-center gap-2 disabled:opacity-60"
+                        disabled={loading}
                     >
-                        Sign in <span className="ml-1"><ArrowRight className="w-4 h-4" /></span>
+                        {loading ? 'Signing in...' : (<><span>Sign in</span> <span className="ml-1"><ArrowRight className="w-4 h-4" /></span></>)}
                     </button>
                 </div>
             </form>
+
+            {/* forgot password button */}
+            <div className="mt-4">
+                <a href="/forgot-password" className="text-primary-600 hover:underline text-sm">Forgot Password?</a>
+            </div>
         </div>
     );
 };
